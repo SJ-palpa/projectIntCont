@@ -1,13 +1,1 @@
 # projectIntCont
-.DS_Store
-*.class
-*.bak
-.idea
-/target
-/out
-*.iml
-*.war
-*.jar
-*.zip
-settings.xml
-/nbprojet
