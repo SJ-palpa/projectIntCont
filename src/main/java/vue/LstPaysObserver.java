@@ -19,12 +19,22 @@ public class LstPaysObserver implements Observer{
     private List lst;
 
     public LstPaysObserver (List lst) { this.lst = lst; }
-
+    
     @Override
-    public void update (Observable o, Object arg) {
-        if (((Action)arg).getAction() == Action.LOAD) {
-            lst.removeAll(); for (int i=0; i < ((Modele)o).size(); i++) { lst.add(((Modele)o).get(i).toString()); }
-        }
+    public void update(Observable o, Object args) {
+        if (args instanceof Action) { updateSure(o, (Action)args); }
     }
     
+    private void updateSure (Observable o, Action arg) {
+        switch(arg.getAction()) {
+            case Action.LOAD: update((Modele)o); break;
+        }
+    }
+    private void update(Modele o) {
+        int size = o.size();
+        lst.removeAll();
+        for (int i = 0; i < size; i++) {
+            lst.add(o.get(i).toString());
+        }
+    }
 }
