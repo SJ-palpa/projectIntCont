@@ -6,7 +6,7 @@
 package vue;
 
 import composant.Feu;
-import java.awt.List;
+import java.awt.event.WindowListener;
 import metier.Modele;
 
 /**
@@ -20,7 +20,7 @@ public class FrmMain extends java.awt.Frame {
     private java.awt.List lstPays;
     private Feu feu;
     
-    private Modele modelePays = new Modele();
+    public Modele modelePays = new Modele();
     
     public FrmMain()
     {          
@@ -28,10 +28,9 @@ public class FrmMain extends java.awt.Frame {
         initObservers();
         modelePays.loadData();
     }
-    
+
     private void init()
     {   
-        // Init
         setTitle("My First Application");
        
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -44,16 +43,8 @@ public class FrmMain extends java.awt.Frame {
                 formWindowClosing(evt);
             }
         });
-        
-        // Composant Feu
-        feu = new composant.Feu();
-        feu.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                feuMousePressed(evt);
-            }
-        });
 
+        feu = new composant.Feu();   
         lstPays = new java.awt.List();
         
         
@@ -66,14 +57,7 @@ public class FrmMain extends java.awt.Frame {
     
     private void initObservers () {
         modelePays.addObserver(new LstPaysObserver(lstPays));
-    }
-    
-    
-    private void feuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feu2MousePressed
-        //tfEtat.setText(feu2.getEtat().toString());
-    }//GEN-LAST:event_feu2MousePressed
-    
-
+    }   
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
         dispose();

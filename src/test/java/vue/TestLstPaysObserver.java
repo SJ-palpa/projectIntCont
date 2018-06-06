@@ -1,9 +1,7 @@
 package vue;
 
 import static org.testng.Assert.*;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.annotations.DataProvider;
 import java.awt.List;
 import java.util.ArrayList;
 import metier.Action;
@@ -26,12 +24,19 @@ public class TestLstPaysObserver
     }
 
     @Test
-    public void should_have_empty_list_if_action_received_is_not_instanceof_action() {
+    public void IfEmptylistIfActionIsNotInstanceofAction() {
         lstPays.loadData();
         observer.update(lstPays, "LOAD");
         ArrayList list = new ArrayList();
         for(int i = 0; i<lstGUI.getItemCount(); i++) { list.add(lstGUI.getItem(i)); } 
         assertThat(list).isEmpty();
+    }
+    
+    @Test
+    public void shouldReturnActionPos()
+    {   
+        action = new Action(1);
+        assertEquals(action.getPos(),-1);
     }
 
 }

@@ -1,9 +1,8 @@
 package domaine;
 
 import static org.testng.Assert.*;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.annotations.DataProvider;
+
 
 public class TestPays {
  	
@@ -19,8 +18,7 @@ public class TestPays {
      @Test
     public void testToString() {
         Pays instance = new Pays("FR", "france");
-        String result = instance.toString();
-        assertEquals(result, "france");
+        assertEquals(instance.toString(), "france");
     }
   
     @Test

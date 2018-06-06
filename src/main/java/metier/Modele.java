@@ -27,9 +27,7 @@ public class Modele extends Observable{
         setChanged();
         notifyObservers(new Action(Action.LOAD));
     }
-    
-    public Pays getPays(int pos){  return (Pays) paysList.get(pos);}
-    
+  
     public final int size() { return paysList.size(); }
     
     
