@@ -6,9 +6,12 @@ import domaine.Pays;
 import java.util.ArrayList;
 import vue.LstPaysObserver;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.testng.Assert.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import outils.FileReader;
 
 public class TestModele {
 
@@ -16,8 +19,9 @@ public class TestModele {
 	private Modele mdPays;
 	private LstPaysObserver observer;
 	private java.awt.List list;
-
-	@BeforeTest
+        private ArrayList paysList;
+    
+    @BeforeTest
     protected void setUp()
     {
     	list = new java.awt.List();
@@ -25,6 +29,7 @@ public class TestModele {
     	mdPays = new Modele();
         pays1 = new Pays("CH","Suisse");
         pays2 = new Pays("FR","FRANCE");
+        paysList = mock(ArrayList.class);
     }
 
 
@@ -103,6 +108,24 @@ public class TestModele {
             mdPays.setList(lst);
             assertEquals(mdPays.get(1), null);   
         }
+        
+        @Test
+        public void shouldReturnNullIfgetZero()
+        {
+            ArrayList<Pays> lst = new ArrayList();
+            mdPays.setList(lst);
+            assertEquals(mdPays.get(0), null);   
+        }
+        
+        @Test
+        public void shouldReturnNullIfgetLIstSize()
+        {
+            when(paysList.size()).thenReturn(1);
+            ArrayList<Pays> lst = new ArrayList();
+            mdPays.setList(lst);
+            assertEquals(mdPays.get(1),null);   
+        }
+        
         
         @Test
         public void shouldReturnNullIfPaysListEmptyWithget()

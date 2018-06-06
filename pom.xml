@@ -33,7 +33,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ch.hesge.main</mainClass>
+                            <mainClass>ch.hesge.projectIntCont.main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -114,11 +114,6 @@
                        </goals>
                    </execution>
                </executions>
-               <configuration>
-                   <excludes>
-                       <exclude>**/outils</exclude>
-                   </excludes>
-               </configuration>
             </plugin>
             <plugin>
                 <groupId>org.pitest</groupId>
@@ -127,7 +122,12 @@
                 <configuration>
                     <testPlugin>testng</testPlugin>
                     <excludedClasses>
-                        ch.hesge.projectIntCont.outils
+                        <excludedClasse>
+                            outils*
+                        </excludedClasse>
+                        <excludedClasse>
+                            composant*    
+                        </excludedClasse>   
                     </excludedClasses>
                 </configuration>
             </plugin>

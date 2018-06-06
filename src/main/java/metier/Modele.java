@@ -36,7 +36,7 @@ public class Modele extends Observable{
         return paysList.get(pos);
     }
 
-     protected Object get() {
+    public Object get() {
         if (posCrt < 0 || posCrt >= paysList.size()) { return null; }
         return paysList.get(posCrt);
     }

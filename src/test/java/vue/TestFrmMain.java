@@ -12,9 +12,7 @@ import org.testng.annotations.BeforeTest;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import java.awt.Dimension;
-import java.awt.Robot;
-import java.awt.event.InputEvent;
-import java.awt.event.WindowEvent;
+
 
 
 /**
@@ -29,7 +27,6 @@ public class TestFrmMain {
     protected void setUp()
     {
     	frmMain = new FrmMain(); 
-        WindowEvent evt;
     }
     
     @Test
@@ -37,10 +34,6 @@ public class TestFrmMain {
         assertNotNull(frmMain);
     }
     
-    @Test
-    public void shouldDiposeApp() {
-     //   frmMain.d;
-    }
     
     @Test 
     public void shouldHaveTitle() {
@@ -62,14 +55,4 @@ public class TestFrmMain {
     public void modelePaysShouldHaveOneObserver() {
         assertEquals(frmMain.modelePays.countObservers(),1);
     }
-    
-    @Test
-    public void frmMainShouldDispose() {
-      /* Robot robot = new Robot();
-       robot.mousePress((int) InputEvent.WINDOW_EVENT_MASK);
-       frmMain.get
-       robot.sh*/
-    }
-    
-  
 }

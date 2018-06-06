@@ -6,6 +6,7 @@
 package vue;
 
 import composant.Feu;
+import composant.FeuCouleur;
 import java.awt.event.WindowListener;
 import metier.Modele;
 
@@ -17,8 +18,8 @@ public class FrmMain extends java.awt.Frame {
     
     static final int H_SIZE = 300;
     static final int V_SIZE = 200;
-    private java.awt.List lstPays;
-    private Feu feu;
+    public java.awt.List lstPays;
+    public Feu feu;
     
     public Modele modelePays = new Modele();
     
@@ -44,8 +45,13 @@ public class FrmMain extends java.awt.Frame {
             }
         });
 
+        
+        
+        
         feu = new composant.Feu();   
         lstPays = new java.awt.List();
+        
+        lstPays.addItemListener(this::lstPaysItemStateChanged);
         
         
         
@@ -67,6 +73,14 @@ public class FrmMain extends java.awt.Frame {
         System.exit(0);
     }    
     
-    
-    
+    private void lstPaysItemStateChanged(java.awt.event.ItemEvent evt) {                                            
+        if(lstPays.getSelectedItem().equals("Allemagne")) 
+        {
+            feu.setEtat(FeuCouleur.VERT);   
+        } 
+        else
+        {
+             feu.setEtat(FeuCouleur.ROUGE); 
+        }
+    }  
 }
